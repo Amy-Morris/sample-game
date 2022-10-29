@@ -153,7 +153,7 @@ export default class MainScene extends Phaser.Scene {
     };
   }
 
-  private lightTimerConfig() {
+  private lightTimerConfig(): LightTimerConfig {
     return {
       delay: this.speed,
       repeat: 3,
@@ -180,3 +180,10 @@ export default class MainScene extends Phaser.Scene {
     };
   }
 }
+
+export type LightTimerConfig = {
+  delay: number;
+  repeat: number;
+  paused: boolean;
+  callback: () => void;
+};

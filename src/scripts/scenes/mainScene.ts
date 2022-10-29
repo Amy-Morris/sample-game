@@ -49,7 +49,7 @@ export default class MainScene extends Phaser.Scene {
     const boxDimensions = { x: this.podium.x - this.podium.width, y: 250 };
 
     this.one = this.add
-      .sprite(boxDimensions.x, boxDimensions.y, 'atlas', 'gray')
+      .sprite(boxDimensions.x, boxDimensions.y, 'atlas', AtlasKey.Gray)
       .setOrigin(0);
 
     this.two = this.add
@@ -123,21 +123,21 @@ export default class MainScene extends Phaser.Scene {
 
   setAllToGray() {
     this.audio.gray.play();
-    this.one.setTexture('atlas', 'gray');
-    this.two.setTexture('atlas', 'gray');
-    this.three.setTexture('atlas', 'gray');
+    this.one.setTexture('atlas', AtlasKey.Gray);
+    this.two.setTexture('atlas', AtlasKey.Gray);
+    this.three.setTexture('atlas', AtlasKey.Gray);
   }
 
   changeColor(num: number) {
     if (num === 3) {
       this.audio.red.play();
-      this.three.setTexture('atlas', 'red');
+      this.three.setTexture('atlas', AtlasKey.Red);
     } else if (num === 2) {
       this.audio.red.play();
-      this.two.setTexture('atlas', 'red');
+      this.two.setTexture('atlas', AtlasKey.Red);
     } else if (num === 1) {
       this.audio.green.play();
-      this.one.setTexture('atlas', 'green');
+      this.one.setTexture('atlas', AtlasKey.Green);
     }
   }
 
@@ -187,3 +187,9 @@ export type LightTimerConfig = {
   paused: boolean;
   callback: () => void;
 };
+
+export const AtlasKey = {
+  Red: 'red',
+  Green: 'green',
+  Gray: 'gray'
+} as const;

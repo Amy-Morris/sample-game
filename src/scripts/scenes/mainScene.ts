@@ -30,7 +30,8 @@ export default class MainScene extends Phaser.Scene {
   }
 
   init() {
-    // this.speed = Phaser.Math.Between(800, 1500);
+    // randomised timer when active
+    this.speed = Phaser.Math.Between(800, 1500);
   }
 
   create() {

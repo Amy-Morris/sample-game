@@ -1,9 +1,5 @@
-import FpsText from '../objects/fpsText';
-
 export default class MainScene extends Phaser.Scene {
   private speed = 300;
-  private fpsText: FpsText;
-
   private bg: Phaser.GameObjects.Image;
 
   private player: Phaser.GameObjects.Sprite;
@@ -38,8 +34,6 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    this.fpsText = new FpsText(this);
-
     this.audio.gray = this.sound.add('gray');
     this.audio.red = this.sound.add('red');
     this.audio.green = this.sound.add('green');
@@ -97,17 +91,6 @@ export default class MainScene extends Phaser.Scene {
           this.output = 'Not so good!' + '\n' + 'Tap Time: ' + tapTime;
         }
       }
-
-      // ||
-      //   (this.timer.repeatCount === 0 && this.timer.getRemainingSeconds() > 0)
-
-      // if (this.timer.repeatCount === 1) {
-      //   this.timer.paused;
-      //   this.output = 'Won!';
-      // } else {
-      //   this.timer.paused;
-      //   this.output = 'Lost!';
-      // }
     });
   }
 
@@ -124,18 +107,6 @@ export default class MainScene extends Phaser.Scene {
       // it is configured to start halfway through the last red light
       // and end halfway through the first green light
       this.tapTimer = this.time.addEvent(this.tapTimerConfig());
-    }
-
-    if (this.lightTimer) {
-      this.fpsText.setText(
-        'Time Progress: ' +
-          this.lightTimer.getProgress().toString().substring(0, 4) +
-          '\n' +
-          'Timer Paused?: ' +
-          (this.lightTimer.paused ? 'Yes' : 'No') +
-          '\n' +
-          this.output
-      );
     }
   }
 
